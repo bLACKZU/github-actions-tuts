@@ -18,9 +18,18 @@ jobs:
       - name: Hello World
         run: echo "Hello, World!" 
         shell: bash
+      - name: Print working directory 
+        run: pwd
+        shell: bash
+      - name: List files
+        run: ls -la
+        shell: bash
   goodbye-world:
     runs-on: ubuntu-latest
     steps:
       - name: Goodbye World
         run: echo "Goodbye, World!" 
+        shell: bash
+      - name: Print working directory 
+        run: pwd
         shell: bash
