@@ -1,0 +1,22 @@
+name: Comment on an issue created by a user
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+    comment:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Dump github context
+          run: echo "${{ toJson(github.event) }}" | jq
+          shell: bash
+        - name: Create comment
+          uses: peter-evans/create-or-update-comment@v4
+          with:
+            issue-number: ${{ github.event.issue.number }}
+            body: |
+                Thanks for creating this issue! We will look into it soon.
+            reactions: '+1'
+            
