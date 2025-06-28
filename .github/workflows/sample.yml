@@ -24,6 +24,9 @@ jobs:
       - name: List files
         run: ls -la
         shell: bash
+      - name: Print README file
+        run: cat README.md
+        shell: bash
   goodbye-world:
     runs-on: ubuntu-latest
     steps:
