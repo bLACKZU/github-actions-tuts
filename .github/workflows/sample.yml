@@ -30,11 +30,11 @@ jobs:
         echo "New addition" >> README.md
         git add README.md
         git commit -m "Add README.md"
-        git push --set-upstream origin develop
+
       
     - name: Cat file
       run: cat README.md
-      
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
