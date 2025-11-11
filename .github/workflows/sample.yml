@@ -10,37 +10,37 @@ on:
   workflow_dispatch:
 
 jobs:
-  # hello-world:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Hello World
-  #       run: echo "Hello, World!" 
-  #       shell: bash
-  #     - name: Print working directory 
-  #       run: pwd
-  #       shell: bash
-  #     - name: List files
-  #       run: ls -la
-  #       shell: bash
-  #     - name: Print README file
-  #       run: cat README.md
-  #       shell: bash
-  # goodbye-world:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Goodbye World
-  #       run: echo "Goodbye, World!" 
-  #       shell: bash
-  #     - name: Print working directory 
-  #       run: pwd
-  #       shell: bash
-  - name: Checkout 
-    uses: actions/checkout@v5
-    with:
-      repository: bLACKZU/npm-infra
-      token: ${{ secrets.token }}
-      path: npm-infra
+  hello-world:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v5
+      with:
+        repository: bLACKZU/npm-infra
+        token: ${{ secrets.token }}
+        path: npm-infra
+    - name: commit
+      run: |
+        echo "hello world" >> hello.txt
+        git config --global user.name 'bLACKZU'
+        git config --global user.email 'satyakighosh65@gmail.com'
+        git checkout -b develop
+        git add hello.txt
+        git commit -m "Add hello.txt"
+        git push --set-upstream origin develop
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.token }}
+        commit-message: Add hello.txt
+        title: Add hello.txt
+        body: This PR adds a hello.txt file to the repository.
+        base: main
+        branch: develop
+  
   
 
