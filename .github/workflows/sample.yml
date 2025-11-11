@@ -26,11 +26,8 @@ jobs:
       run: |
         git config --global user.name 'bLACKZU'
         git config --global user.email 'satyakighosh65@gmail.com'
-        git checkout -b develop
         echo "New addition" >> README.md
         git add README.md
-        git commit -m "Add README.md"
-        git push --set-upstream origin develop
       
     - name: Cat file
       run: cat README.md
@@ -39,7 +36,6 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.token }}
-        branch-token: ${{ secrets.token }}
         commit-message: Add hello.txt
         title: Add hello.txt
         body: This PR adds a hello.txt file to the repository.
