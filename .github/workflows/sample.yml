@@ -21,19 +21,15 @@ jobs:
       with:
         repository: bLACKZU/npm-infra
         token: ${{ secrets.token }}
-  
-    - name: List Files
-      run: ls -la
-      
+
     - name: commit
-      working-directory: npm-infra
       run: |
-        echo "hello world" >> hello.txt
         git config --global user.name 'bLACKZU'
         git config --global user.email 'satyakighosh65@gmail.com'
         git checkout -b develop
-        git add hello.txt
-        git commit -m "Add hello.txt"
+        echo "New addition" >> README.md
+        git add README.md
+        git commit -m "Add README.md"
         git push --set-upstream origin develop
 
     - name: Create Pull Request
