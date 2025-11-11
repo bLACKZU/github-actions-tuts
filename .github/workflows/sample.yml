@@ -10,29 +10,37 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello-world:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Hello World
-        run: echo "Hello, World!" 
-        shell: bash
-      - name: Print working directory 
-        run: pwd
-        shell: bash
-      - name: List files
-        run: ls -la
-        shell: bash
-      - name: Print README file
-        run: cat README.md
-        shell: bash
-  goodbye-world:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Goodbye World
-        run: echo "Goodbye, World!" 
-        shell: bash
-      - name: Print working directory 
-        run: pwd
-        shell: bash
+  # hello-world:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #     - name: Hello World
+  #       run: echo "Hello, World!" 
+  #       shell: bash
+  #     - name: Print working directory 
+  #       run: pwd
+  #       shell: bash
+  #     - name: List files
+  #       run: ls -la
+  #       shell: bash
+  #     - name: Print README file
+  #       run: cat README.md
+  #       shell: bash
+  # goodbye-world:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Goodbye World
+  #       run: echo "Goodbye, World!" 
+  #       shell: bash
+  #     - name: Print working directory 
+  #       run: pwd
+  #       shell: bash
+  - name: Checkout 
+    uses: actions/checkout@v5
+    with:
+      repository: bLACKZU/npm-infra
+      token: ${{ secrets.token }}
+      path: npm-infra
+  
+
