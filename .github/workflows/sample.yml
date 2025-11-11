@@ -21,7 +21,7 @@ jobs:
       with:
         repository: bLACKZU/npm-infra
         token: ${{ secrets.token }}
-        path: npm-infra
+    
     - name: commit
       run: |
         echo "hello world" >> hello.txt
