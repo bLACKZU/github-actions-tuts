@@ -29,11 +29,9 @@ jobs:
         echo "New addition" >> README.md
         git add README.md
       
-    - name: Cat file
-      run: cat README.md
-      
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
+      id: cpr
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.token }}
         commit-message: Add hello.txt
@@ -41,6 +39,9 @@ jobs:
         body: This PR adds a hello.txt file to the repository.
         base: main
         branch: develop
+
+    - name: Pull req number
+      run: echo "Pull Request Number is ${{ steps.cpr.outputs.pull-request-number }}"
   
   
 
